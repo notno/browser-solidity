@@ -127,6 +127,7 @@ Renderer.prototype.contracts = function (data, source) {
   var $contractOutput = this.udapp.render();
 
   var $txOrigin = $('#txorigin');
+  var $txOriginTxt = $('#txoriginText');
 
   this.udapp.getAccounts(function (err, accounts) {
     if (err) {
@@ -136,8 +137,10 @@ Renderer.prototype.contracts = function (data, source) {
       $txOrigin.empty();
       for (var a in accounts) { $txOrigin.append($('<option />').val(accounts[a]).text(accounts[a])); }
       $txOrigin.val(accounts[0]);
+      $txOriginTxt.text(": " + accounts[0]);
     } else {
       $txOrigin.val('unknown');
+      $txOriginTxt.text('');
     }
   });
 
